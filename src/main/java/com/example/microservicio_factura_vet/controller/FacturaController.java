@@ -37,13 +37,18 @@ public class FacturaController {
         return facturaService.getFacturaById(id);
     }
 
+    @GetMapping("/total")
+    public Double obtenerTotalFacturas() {
+        return facturaService.calcularTotalFacturas();
+    }
+
     @PostMapping
-    public Factura creaStudent(@RequestBody Factura factura) {
+    public Factura creaFactura(@RequestBody Factura factura) {
         return facturaService.createFactura(factura);
     }
     
     @PutMapping("/{id}")
-    public Factura updateStudent(@PathVariable Long id, @RequestBody Factura factura) {
+    public Factura updateFactura(@PathVariable Long id, @RequestBody Factura factura) {
         return facturaService.updateFactura(id, factura);
     }
 

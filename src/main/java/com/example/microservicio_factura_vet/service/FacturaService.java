@@ -10,4 +10,5 @@ public interface FacturaService {
     Factura createFactura(Factura factura);
     Factura updateFactura(Long id,Factura factura);
     void deleteFactura(Long id);
+    Double calcularTotalFacturas();    
 }

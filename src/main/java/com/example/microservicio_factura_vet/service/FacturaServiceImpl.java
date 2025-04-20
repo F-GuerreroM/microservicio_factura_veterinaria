@@ -30,17 +30,31 @@ public class FacturaServiceImpl implements FacturaService{
     }
 
     @Override
-    public Factura updateFactura(Long id, Factura factura){
-        if(facturaRepository.existsById(id)){
-            factura.setId(id);
-            return facturaRepository.save(factura);
-        }   else {
-                return null;
-        }
+public Factura updateFactura(Long id, Factura factura) {
+    Optional<Factura> facturaExistenteOpt = facturaRepository.findById(id);
+    if (facturaExistenteOpt.isPresent()) {
+        Factura facturaExistente = facturaExistenteOpt.get();
+
+        // Solo actualiza si viene un valor nuevo (evita pisar con null)
+        if (factura.getEstado() != null)
+            facturaExistente.setEstado(factura.getEstado());
+
+        if (factura.getTotal() != null)
+            facturaExistente.setTotal(factura.getTotal());
+        
+        return facturaRepository.save(facturaExistente);
+    } else {
+        return null;
     }
+}
 
     @Override
     public void deleteFactura(Long id){
         facturaRepository.deleteById(id);
+    }
+
+    @Override
+    public Double calcularTotalFacturas() {
+        return facturaRepository.sumarTotalFacturas();
     }
 }
