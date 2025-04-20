@@ -1,0 +1,9 @@
+package com.example.microservicio_factura_vet.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.microservicio_factura_vet.model.Factura;
+
+public interface FacturaRepository extends JpaRepository<Factura, Long>{
+    
+}
