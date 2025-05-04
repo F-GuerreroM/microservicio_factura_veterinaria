@@ -1,5 +1,7 @@
 package com.example.microservicio_factura_vet.model;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +15,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "factura")
-public class Factura {
+public class Factura extends RepresentationModel<Factura> {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         
@@ -57,7 +59,7 @@ public class Factura {
     public void setCliente(String cliente) {
         this.cliente = cliente;
     }
-    public void setServicios(String servicio) {
+    public void setServicio(String servicio) {
         this.servicio = servicio;
     }
     public void setTotal(Double total) {
