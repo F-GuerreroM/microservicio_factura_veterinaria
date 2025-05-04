@@ -1,0 +1,7 @@
+com\example\microservicio_factura_vet\repository\FacturaRepository.class
+com\example\microservicio_factura_vet\model\Factura.class
+com\example\microservicio_factura_vet\MicroservicioFacturaVetApplication.class
+com\example\microservicio_factura_vet\controller\FacturaController.class
+com\example\microservicio_factura_vet\controller\FacturaNotFoundException.class
+com\example\microservicio_factura_vet\service\FacturaService.class
+com\example\microservicio_factura_vet\service\FacturaServiceImpl.class

@@ -1,0 +1,3 @@
+com\example\microservicio_factura_vet\MicroservicioFacturaVetApplicationTests.class
+com\example\microservicio_factura_vet\repository\FacturaRepositoryTest.class
+com\example\microservicio_factura_vet\service\FacturaServiceTest.class
