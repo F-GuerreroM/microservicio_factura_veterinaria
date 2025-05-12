@@ -1,7 +1,7 @@
 package com.example.microservicio_factura_vet.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
@@ -56,5 +56,26 @@ public class FacturaRepositoryTest {
             facturaRepository.save(factura);
             facturaRepository.flush(); // fuerza validaciones de JPA
         });
+    }
+
+    @Test
+    public void eliminarFacturaTest() {
+        Factura factura = new Factura();
+        factura.setCliente("Carlos Soto");
+        factura.setServicio("Consulta veterinaria");
+        factura.setTotal(18000.0); // válido: > @Min(1000)
+        factura.setEstado("PAGADA");
+
+        Factura guardada = facturaRepository.save(factura);
+        facturaRepository.flush(); // <-- IMPORTANTE
+
+        Long id = guardada.getId();
+        assertNotNull(id); // nos aseguramos que se guardó bien
+
+        // Eliminar
+        facturaRepository.deleteById(id);
+        facturaRepository.flush(); // <-- asegura eliminación
+
+        assertFalse(facturaRepository.findById(id).isPresent());
     }
 }
